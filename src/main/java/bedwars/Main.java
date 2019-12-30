@@ -21,7 +21,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.scoreboard.*;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -214,7 +213,6 @@ public final class Main extends JavaPlugin implements Listener {
 				p.setGameMode(GameMode.SURVIVAL);
 				p.getEnderChest().clear();
 				p.getInventory().clear();
-				giveLeatherArmor(p, info.color);
 				p.getInventory().addItem(new ItemStack(Material.WOOD_SWORD));
 			}
 		}

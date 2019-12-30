@@ -73,14 +73,8 @@ object BlockProtection : Listener {
     @EventHandler fun blockEvent(evt: BlockFromToEvent) = processEvent(evt)
     @EventHandler fun blockEvent(evt: BlockGrowEvent) = processEvent(evt)
     @EventHandler fun blockEvent(evt: BlockIgniteEvent) = processEvent(evt)
-    @EventHandler fun blockEvent(evt: BlockMultiPlaceEvent) {
-            evt.replacedBlockStates.forEach {
-                if (processBlock(it.block)) {
-                    evt.isCancelled = true
-                    return@blockEvent
-                }
-            }
-        }
+    @EventHandler fun blockEvent(evt: BlockMultiPlaceEvent) =
+            evt.replacedBlockStates.any { processBlock(it.block) } then { evt.isCancelled = true }
     @EventHandler fun blockEvent(evt: BlockPlaceEvent) = processEvent(evt)
     @EventHandler fun blockEvent(evt: BlockSpreadEvent) = processEvent(evt)
     @EventHandler fun blockEvent(evt: EntityBlockFormEvent) = processEvent(evt)
